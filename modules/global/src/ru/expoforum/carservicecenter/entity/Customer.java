@@ -3,15 +3,15 @@ package ru.expoforum.carservicecenter.entity;
 import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 
 @Table(name = "CARSERVICECENTER_CUSTOMER")
 @Entity(name = "carservicecenter_Customer")
 @NamePattern("%s|name")
+@Inheritance(strategy = InheritanceType.JOINED)
+@DiscriminatorColumn(name = "DTYPE", discriminatorType = DiscriminatorType.STRING, length = 255)
 public class Customer extends StandardEntity {
     private static final long serialVersionUID = -2336279183326881815L;
 
