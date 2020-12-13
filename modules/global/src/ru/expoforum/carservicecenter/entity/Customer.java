@@ -2,10 +2,14 @@ package ru.expoforum.carservicecenter.entity;
 
 import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
+import com.haulmont.cuba.core.entity.annotation.OnDelete;
+import com.haulmont.cuba.core.entity.annotation.OnDeleteInverse;
+import com.haulmont.cuba.core.global.DeletePolicy;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Table(name = "CARSERVICECENTER_CUSTOMER")
 @Entity(name = "carservicecenter_Customer")
@@ -25,6 +29,21 @@ public class Customer extends StandardEntity {
     @Column(name = "EMAIL")
     @Email(message = "{msg://carservicecenter_Customer.email.validation.Email}")
     private String email;
+    @JoinTable(name = "CARSERVICECENTER_CAR_SERVICE_CENTER_CUSTOMER_LINK",
+            joinColumns = @JoinColumn(name = "CUSTOMER_ID"),
+            inverseJoinColumns = @JoinColumn(name = "CAR_SERVICE_CENTER_ID"))
+    @OnDeleteInverse(DeletePolicy.UNLINK)
+    @OnDelete(DeletePolicy.UNLINK)
+    @ManyToMany
+    private List<CarServiceCenter> centers;
+
+    public List<CarServiceCenter> getCenters() {
+        return centers;
+    }
+
+    public void setCenters(List<CarServiceCenter> centers) {
+        this.centers = centers;
+    }
 
     public String getEmail() {
         return email;

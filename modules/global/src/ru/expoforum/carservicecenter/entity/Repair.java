@@ -26,6 +26,19 @@ public class Repair extends StandardEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "EMPLOYEE_ID")
     private Employee employee;
+    @OnDeleteInverse(DeletePolicy.UNLINK)
+    @OnDelete(DeletePolicy.UNLINK)
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "CENTER_ID")
+    private CarServiceCenter center;
+
+    public CarServiceCenter getCenter() {
+        return center;
+    }
+
+    public void setCenter(CarServiceCenter center) {
+        this.center = center;
+    }
 
     public Employee getEmployee() {
         return employee;

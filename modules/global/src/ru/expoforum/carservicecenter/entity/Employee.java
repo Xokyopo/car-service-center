@@ -2,10 +2,11 @@ package ru.expoforum.carservicecenter.entity;
 
 import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
+import com.haulmont.cuba.core.entity.annotation.OnDelete;
+import com.haulmont.cuba.core.entity.annotation.OnDeleteInverse;
+import com.haulmont.cuba.core.global.DeletePolicy;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotBlank;
@@ -37,6 +38,19 @@ public class Employee extends StandardEntity {
 
     @Column(name = "SALARY")
     private Long salary;
+    @OnDeleteInverse(DeletePolicy.UNLINK)
+    @OnDelete(DeletePolicy.UNLINK)
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "CENTER_ID")
+    private CarServiceCenter center;
+
+    public CarServiceCenter getCenter() {
+        return center;
+    }
+
+    public void setCenter(CarServiceCenter center) {
+        this.center = center;
+    }
 
     public LocalDateTime getBirthDay() {
         return birthDay;

@@ -8,5 +8,6 @@
         <class>ru.expoforum.carservicecenter.entity.City</class>
         <class>ru.expoforum.carservicecenter.entity.Employee</class>
         <class>ru.expoforum.carservicecenter.entity.Repair</class>
+        <class>ru.expoforum.carservicecenter.entity.CarServiceCenter</class>
     </persistence-unit>
 </persistence>
