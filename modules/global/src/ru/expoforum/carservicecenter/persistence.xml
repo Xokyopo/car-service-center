@@ -6,5 +6,6 @@
         <class>ru.expoforum.carservicecenter.entity.Individual</class>
         <class>ru.expoforum.carservicecenter.entity.Company</class>
         <class>ru.expoforum.carservicecenter.entity.City</class>
+        <class>ru.expoforum.carservicecenter.entity.Employee</class>
     </persistence-unit>
 </persistence>
