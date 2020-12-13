@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://companyEdit.caption"
+        focusComponent="form"
+        messagesPack="ru.expoforum.carservicecenter.web.screens.company">
+    <data>
+        <instance id="companyDc"
+                  class="ru.expoforum.carservicecenter.entity.Company">
+            <view extends="_local"/>
+            <loader/>
+        </instance>
+    </data>
+    <dialogMode height="AUTO"
+                width="AUTO"
+                modal="true"
+                forceDialog="true"/>
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="companyDc">
+            <column width="350px">
+                <textField id="nameField" property="name"/>
+                <textField id="innField" property="inn"/>
+                <textField id="phoneField" property="phone"/>
+                <textField id="emailField" property="email"/>
+            </column>
+        </form>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

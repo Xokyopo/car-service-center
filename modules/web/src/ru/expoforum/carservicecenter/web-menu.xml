@@ -5,5 +5,6 @@
         <item screen="carservicecenter_City.browse" caption="mainMsg://menu_config.carservicecenter_City.browse"/>
         <item screen="carservicecenter_Individual.browse"
               caption="mainMsg://menu_config.carservicecenter_Individual.browse"/>
+        <item screen="carservicecenter_Company.browse" caption="mainMsg://menu_config.carservicecenter_Company.browse"/>
     </menu>
 </menu-config>
