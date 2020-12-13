@@ -11,7 +11,7 @@ create table CARSERVICECENTER_EMPLOYEE (
     --
     FIRST_NAME varchar(255) not null,
     LAST_NAME varchar(255),
-    BIRTH_DAY timestamp not null,
+    BIRTH_DAY date not null,
     EMAIL varchar(255),
     SALARY bigint,
     CENTER_ID varchar(36),

@@ -11,7 +11,7 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.FutureOrPresent;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Table(name = "CARSERVICECENTER_EMPLOYEE")
 @Entity(name = "carservicecenter_Employee")
@@ -30,7 +30,7 @@ public class Employee extends StandardEntity {
     @Column(name = "BIRTH_DAY", nullable = false)
     @NotNull
     @FutureOrPresent(message = "{msg://carservicecenter_Employee.birthDay.validation.FutureOrPresent}")
-    private LocalDateTime birthDay;
+    private LocalDate birthDay;
 
     @Column(name = "EMAIL")
     @Email(message = "{msg://carservicecenter_Employee.email.validation.Email}")
@@ -38,11 +38,20 @@ public class Employee extends StandardEntity {
 
     @Column(name = "SALARY")
     private Long salary;
+
     @OnDeleteInverse(DeletePolicy.UNLINK)
     @OnDelete(DeletePolicy.UNLINK)
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "CENTER_ID")
     private CarServiceCenter center;
+
+    public LocalDate getBirthDay() {
+        return birthDay;
+    }
+
+    public void setBirthDay(LocalDate birthDay) {
+        this.birthDay = birthDay;
+    }
 
     public CarServiceCenter getCenter() {
         return center;
@@ -50,14 +59,6 @@ public class Employee extends StandardEntity {
 
     public void setCenter(CarServiceCenter center) {
         this.center = center;
-    }
-
-    public LocalDateTime getBirthDay() {
-        return birthDay;
-    }
-
-    public void setBirthDay(LocalDateTime birthDay) {
-        this.birthDay = birthDay;
     }
 
     public Long getSalary() {
