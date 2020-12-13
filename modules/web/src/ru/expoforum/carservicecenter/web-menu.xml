@@ -3,5 +3,7 @@
     <menu id="application-carservicecenter" insertBefore="administration"
           caption="mainMsg://menu_config.application-carservicecenter">
         <item screen="carservicecenter_City.browse" caption="mainMsg://menu_config.carservicecenter_City.browse"/>
+        <item screen="carservicecenter_Individual.browse"
+              caption="mainMsg://menu_config.carservicecenter_Individual.browse"/>
     </menu>
 </menu-config>
