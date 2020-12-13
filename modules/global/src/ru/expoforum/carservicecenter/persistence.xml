@@ -3,5 +3,6 @@
     <persistence-unit name="carservicecenter" transaction-type="RESOURCE_LOCAL">
 
         <class>ru.expoforum.carservicecenter.entity.Customer</class>
+        <class>ru.expoforum.carservicecenter.entity.Individual</class>
     </persistence-unit>
 </persistence>
