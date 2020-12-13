@@ -4,5 +4,6 @@
 
         <class>ru.expoforum.carservicecenter.entity.Customer</class>
         <class>ru.expoforum.carservicecenter.entity.Individual</class>
+        <class>ru.expoforum.carservicecenter.entity.Company</class>
     </persistence-unit>
 </persistence>
