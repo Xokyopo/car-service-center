@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://customerBrowse.caption"
+        focusComponent="customersTable"
+        messagesPack="ru.expoforum.carservicecenter.web.screens.customer">
+    <data readOnly="true">
+        <collection id="customersDc"
+                    class="ru.expoforum.carservicecenter.entity.Customer">
+            <view extends="_local"/>
+            <loader id="customersDl" dynamicAttributes="true">
+                <query>
+                    <![CDATA[select e from carservicecenter_Customer e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800" resizable="true"/>
+    <layout expand="customersTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="customersTable"
+                dataLoader="customersDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="customersTable"
+                    width="100%"
+                    dataContainer="customersDc" multiselect="true">
+            <actions>
+            </actions>
+            <columns>
+                <column id="name"/>
+                <column id="phone"/>
+                <column id="email"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>
