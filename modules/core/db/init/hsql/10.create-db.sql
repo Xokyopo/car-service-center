@@ -87,6 +87,7 @@ create table CARSERVICECENTER_CITY (
     DELETED_BY varchar(50),
     --
     NAME varchar(500) not null,
+    DEFAULT_CITY boolean not null,
     CODE integer,
     --
     primary key (ID)

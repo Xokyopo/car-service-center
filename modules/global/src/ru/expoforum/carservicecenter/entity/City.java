@@ -20,8 +20,20 @@ public class City extends StandardEntity {
     @NotBlank(message = "{msg://carservicecenter_City.name.validation.NotBlank}")
     private String name;
 
+    @Column(name = "DEFAULT_CITY", nullable = false)
+    @NotNull
+    private Boolean defaultCity = false;
+
     @Column(name = "CODE")
     private Integer code;
+
+    public Boolean getDefaultCity() {
+        return defaultCity;
+    }
+
+    public void setDefaultCity(Boolean defaultCity) {
+        this.defaultCity = defaultCity;
+    }
 
     public Integer getCode() {
         return code;
