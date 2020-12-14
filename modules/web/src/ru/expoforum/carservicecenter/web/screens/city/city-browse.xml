@@ -15,7 +15,7 @@
         </collection>
     </data>
     <dialogMode height="600"
-                width="800"/>
+                width="800" resizable="true"/>
     <layout expand="citiesTable"
             spacing="true">
         <filter id="filter"
@@ -27,7 +27,11 @@
                     width="100%"
                     dataContainer="citiesDc">
             <actions>
-                <action id="create" type="create"/>
+                <action id="create" type="create">
+                    <properties>
+                        <property name="openMode" value="DIALOG"/>
+                    </properties>
+                </action>
                 <action id="edit" type="edit"/>
                 <action id="remove" type="remove"/>
             </actions>
