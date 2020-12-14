@@ -20,79 +20,94 @@
     </data>
     <dialogMode height="600"
                 width="800"/>
-    <layout expand="editActions" spacing="true">
-        <form id="form" dataContainer="carServiceCenterDc">
-            <column width="350px">
-                <textField id="nameField" property="name"/>
-                <textField id="phoneField" property="phone"/>
-                <pickerField id="cityField" property="city">
+    <facets>
+        <lookupScreen id="sityModalLoockupScreen" openMode="DIALOG"
+                      entityClass="ru.expoforum.carservicecenter.entity.City" field="cityField"
+                      onAction="cityField.lookup"/>
+    </facets>
+    <layout spacing="true" expand="carServiceTabSheet">
+        <tabSheet id="carServiceTabSheet">
+            <tab id="CarServiceInfo" caption="msg://CarServiceInfo.caption"
+                 margin="true,false,false,false" spacing="true">
+                <form id="form" dataContainer="carServiceCenterDc">
+                    <column width="350px">
+                        <textField id="nameField" property="name"/>
+                        <textField id="phoneField" property="phone"/>
+                        <pickerField id="cityField" property="city">
+                            <actions>
+                                <action id="lookup" type="picker_lookup"/>
+                                <action id="clear" type="picker_clear"/>
+                            </actions>
+                        </pickerField>
+                        <textField id="addressField" property="address"/>
+                    </column>
+                </form>
+            </tab>
+            <tab id="CarServiceEmploeees" caption="msg://CarServiceEmploeees.caption" margin="true,false,false,false"
+                 spacing="true" lazy="true"
+                 expand="employeeTable">
+                <table id="employeeTable" dataContainer="employeesDc" width="100%" height="200px">
                     <actions>
-                        <action id="lookup" type="picker_lookup"/>
-                        <action id="clear" type="picker_clear"/>
+                        <action id="create" type="create"/>
+                        <action id="edit" type="edit"/>
+                        <action id="remove" type="remove"/>
                     </actions>
-                </pickerField>
-                <textField id="addressField" property="address"/>
-            </column>
-        </form>
-        <groupBox id="customersBox" caption="msg://ru.expoforum.carservicecenter.entity/CarServiceCenter.customers">
-            <table id="customersTable" dataContainer="customersDc" width="100%" height="200px">
-                <actions>
-                    <action id="add" type="add">
-                        <properties>
-                            <property name="openMode" value="DIALOG"/>
-                        </properties>
-                    </action>
-                    <action id="exclude" type="exclude"/>
-                </actions>
-                <buttonsPanel>
-                    <button action="customersTable.add"/>
-                    <button action="customersTable.exclude"/>
-                </buttonsPanel>
-                <columns>
-                    <column id="name"/>
-                    <column id="phone"/>
-                    <column id="email"/>
-                </columns>
-            </table>
-        </groupBox>
-        <groupBox id="employeeBox" caption="msg://ru.expoforum.carservicecenter.entity/CarServiceCenter.employees">
-            <table id="employeeTable" dataContainer="employeesDc" width="100%" height="200px">
-                <actions>
-                    <action id="create" type="create"/>
-                    <action id="edit" type="edit"/>
-                    <action id="remove" type="remove"/>
-                </actions>
-                <columns>
-                    <column id="firstName"/>
-                    <column id="lastName"/>
-                    <column id="birthDay"/>
-                    <column id="email"/>
-                    <column id="salary"/>
-                </columns>
-                <buttonsPanel>
-                    <button action="employeeTable.create"/>
-                    <button action="employeeTable.edit"/>
-                    <button action="employeeTable.remove"/>
-                </buttonsPanel>
-            </table>
-        </groupBox>
-        <groupBox id="repairsBox" caption="msg://ru.expoforum.carservicecenter.entity/CarServiceCenter.repairs">
-            <table id="repairsTable" dataContainer="repairsDc" width="100%" height="200px">
-                <actions>
-                    <action id="create" type="create"/>
-                    <action id="edit" type="edit"/>
-                    <action id="remove" type="remove"/>
-                </actions>
-                <columns>
-                    <column id="description"/>
-                </columns>
-                <buttonsPanel>
-                    <button action="repairsTable.create"/>
-                    <button action="repairsTable.edit"/>
-                    <button action="repairsTable.remove"/>
-                </buttonsPanel>
-            </table>
-        </groupBox>
+                    <columns>
+                        <column id="firstName"/>
+                        <column id="lastName"/>
+                        <column id="birthDay"/>
+                        <column id="email"/>
+                        <column id="salary"/>
+                    </columns>
+                    <buttonsPanel>
+                        <button action="employeeTable.create"/>
+                        <button action="employeeTable.edit"/>
+                        <button action="employeeTable.remove"/>
+                    </buttonsPanel>
+                </table>
+            </tab>
+            <tab id="CarServiceRepairs" caption="msg://CarServiceRepairs.caption" margin="true,false,false,false"
+                 spacing="true"
+                 lazy="true" expand="repairsTable">
+                <table id="repairsTable" dataContainer="repairsDc" width="100%" height="200px">
+                    <actions>
+                        <action id="create" type="create"/>
+                        <action id="edit" type="edit"/>
+                        <action id="remove" type="remove"/>
+                    </actions>
+                    <columns>
+                        <column id="description"/>
+                    </columns>
+                    <buttonsPanel>
+                        <button action="repairsTable.create"/>
+                        <button action="repairsTable.edit"/>
+                        <button action="repairsTable.remove"/>
+                    </buttonsPanel>
+                </table>
+            </tab>
+            <tab id="CarServiceCustomers" caption="msg://CarServiceCustomers.caption" lazy="true" spacing="true"
+                 margin="true,false,false,false" expand="customersTable">
+                <table id="customersTable" dataContainer="customersDc" width="100%" height="200px">
+                    <actions>
+                        <action id="add" type="add">
+                            <properties>
+                                <property name="openMode" value="DIALOG"/>
+                            </properties>
+                        </action>
+                        <action id="exclude" type="exclude"/>
+                    </actions>
+                    <buttonsPanel>
+                        <button action="customersTable.add"/>
+                        <button action="customersTable.exclude"/>
+                    </buttonsPanel>
+                    <columns>
+                        <column id="name"/>
+                        <column id="phone"/>
+                        <column id="email"/>
+                    </columns>
+                </table>
+            </tab>
+        </tabSheet>
         <hbox id="editActions" spacing="true">
             <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
             <button id="closeBtn" action="windowClose"/>
